@@ -1,0 +1,502 @@
+/* ================================
+   GLOBAL
+================================ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --secondary: #7c3aed;
+
+    --background: #f5f7fb;
+    --card: #ffffff;
+
+    --text: #1f2937;
+    --text-muted: #6b7280;
+
+    --border: #e5e7eb;
+    --output-bg: #f8fafc;
+
+    --shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+
+    --radius: 14px;
+}
+
+
+/* ================================
+   BODY
+================================ */
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    color: var(--text);
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff 0%,
+            #f8fafc 45%,
+            #f3e8ff 100%
+        );
+
+    padding: 40px 20px;
+}
+
+
+/* ================================
+   CONTAINER
+================================ */
+
+.container {
+    max-width: 950px;
+
+    margin: 0 auto;
+}
+
+
+/* ================================
+   JUDUL UTAMA
+================================ */
+
+.container > h1 {
+    font-size: 34px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+
+    margin-bottom: 8px;
+
+    color: #111827;
+}
+
+
+.container > p {
+    color: var(--text-muted);
+
+    font-size: 15px;
+
+    margin-bottom: 30px;
+}
+
+
+/* ================================
+   CARD LATIHAN
+================================ */
+
+section {
+    position: relative;
+
+    background-color: var(--card);
+
+    padding: 26px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--shadow);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+section:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 35px
+        rgba(0, 0, 0, 0.10);
+}
+
+
+/* GARIS AKSEN DI KIRI CARD */
+
+section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 20px;
+    left: 0;
+
+    width: 5px;
+    height: 45px;
+
+    background:
+        linear-gradient(
+            var(--primary),
+            var(--secondary)
+        );
+
+    border-radius: 0 5px 5px 0;
+}
+
+
+/* ================================
+   JUDUL LATIHAN
+================================ */
+
+section h2 {
+    font-size: 21px;
+
+    margin-bottom: 18px;
+
+    color: #111827;
+}
+
+
+/* ================================
+   LABEL
+================================ */
+
+label {
+    display: block;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    margin-bottom: 8px;
+
+    color: #374151;
+}
+
+
+/* ================================
+   INPUT
+================================ */
+
+input {
+    width: 220px;
+
+    padding: 11px 13px;
+
+    font-size: 14px;
+
+    color: var(--text);
+
+    background-color: white;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    margin-right: 8px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+input:focus {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(79, 70, 229, 0.12);
+}
+
+
+input::placeholder {
+    color: #9ca3af;
+}
+
+
+/* ================================
+   BUTTON
+================================ */
+
+button {
+    padding: 11px 18px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        opacity 0.15s ease;
+}
+
+
+button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 16px
+        rgba(79, 70, 229, 0.25);
+}
+
+
+button:active {
+    transform: translateY(0);
+}
+
+
+/* ================================
+   OUTPUT
+================================ */
+
+.output {
+    margin-top: 18px;
+
+    padding: 16px;
+
+    background-color: var(--output-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    line-height: 1.7;
+
+    color: #374151;
+}
+
+
+/*
+   Kalau output masih kosong,
+   kotaknya tidak ditampilkan.
+*/
+
+.output:empty {
+    display: none;
+}
+
+
+.output strong {
+    color: #111827;
+}
+
+
+/* ================================
+   BIODATA
+================================ */
+
+#biodata-output p {
+    margin-bottom: 7px;
+}
+
+
+#biodata-output p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ================================
+   HASIL KABISAT
+================================ */
+
+#kabisat-output p {
+    margin: 0;
+}
+
+
+/* ================================
+   TABEL PERKALIAN
+================================ */
+
+#perkalian-output {
+    overflow-x: auto;
+}
+
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background-color: white;
+
+    overflow: hidden;
+
+    border-radius: 8px;
+}
+
+
+thead {
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+}
+
+
+th,
+td {
+    padding: 11px 14px;
+
+    text-align: center;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+
+th {
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+td {
+    font-size: 14px;
+
+    color: #374151;
+}
+
+
+tbody tr {
+    transition:
+        background-color 0.15s ease;
+}
+
+
+tbody tr:hover {
+    background-color: #f5f3ff;
+}
+
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* ================================
+   NILAI TERTINGGI / TERENDAH
+================================ */
+
+#nilai-output p {
+    margin-bottom: 8px;
+}
+
+
+#nilai-output p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ================================
+   FETCH USER
+================================ */
+
+#user-output h3 {
+    margin-bottom: 15px;
+
+    color: #111827;
+}
+
+
+#user-output div {
+    padding: 12px 0;
+}
+
+
+#user-output p {
+    margin-bottom: 4px;
+}
+
+
+#user-output hr {
+    margin-top: 12px;
+
+    border: none;
+
+    border-top:
+        1px solid var(--border);
+}
+
+
+#user-output div:last-child hr {
+    display: none;
+}
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 25px 14px;
+    }
+
+
+    .container > h1 {
+        font-size: 27px;
+    }
+
+
+    section {
+        padding: 21px;
+    }
+
+
+    section h2 {
+        font-size: 19px;
+    }
+
+
+    input {
+        width: 100%;
+
+        margin-right: 0;
+
+        margin-bottom: 10px;
+    }
+
+
+    button {
+        width: 100%;
+    }
+
+
+    th,
+    td {
+        padding: 9px;
+
+        font-size: 13px;
+    }
+}
