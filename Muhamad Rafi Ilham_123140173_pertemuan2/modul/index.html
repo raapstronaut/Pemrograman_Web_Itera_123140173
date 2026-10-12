@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Latihan JavaScript ES6+</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    h1 {
+      color: #2563eb;
+    }
+
+    section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px #00000010;
+    }
+
+    button, input {
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #cbd5e1;
+      border-radius: 5px;
+    }
+
+    button {
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    pre {
+      background: #1f2937;
+      color: #86efac;
+      padding: 15px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font-size: 13px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Latihan JavaScript ES6+</h1>
+  <p>Pertemuan 2 - Pengembangan Aplikasi Web</p>
+
+  <!-- LATIHAN 1 SAMPAI 16 -->
+  <section>
+    <h2>Latihan 1-16: JavaScript ES6+</h2>
+    <p>Hasil latihan ditampilkan di bawah ini.</p>
+
+    <pre id="hasilLatihan">Memuat hasil latihan...</pre>
+  </section>
+
+  <!-- LATIHAN 17 SAMPAI 20 -->
+  <section>
+    <h2>Latihan 17-20: Async Programming</h2>
+
+    <button id="runAsyncBtn">
+      Jalankan Latihan Async
+    </button>
+
+    <h3>17. Gabung Data API</h3>
+    <pre id="hasilGabung">Belum dijalankan</pre>
+
+    <h3>18. Retry Exponential Backoff</h3>
+    <pre id="hasilRetry">Belum dijalankan</pre>
+
+    <h3>19. Loading States</h3>
+    <pre id="hasilLoading">Belum dijalankan</pre>
+
+    <h3>20. Error Handling</h3>
+    <pre id="hasilError">Belum dijalankan</pre>
+  </section>
+
+  <!-- LATIHAN 21 -->
+  <section>
+    <h2>21. Pagination Async/Await</h2>
+
+    <button id="prevBtn">Sebelumnya</button>
+    <span id="pageInfo">Halaman 1</span>
+    <button id="nextBtn">Berikutnya</button>
+
+    <p id="pageStatus"></p>
+    <ul id="todoList"></ul>
+  </section>
+
+  <!-- LATIHAN 22 -->
+  <section>
+    <h2>22. Debounced Search</h2>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Cari nama pengguna..."
+    >
+
+    <p id="searchStatus">Ketik nama pengguna.</p>
+    <ul id="userList"></ul>
+  </section>
+
+  <!-- MENAMPILKAN CONSOLE.LOG KE WEBSITE -->
+  <script>
+    const hasilLatihan = document.getElementById("hasilLatihan");
+
+    hasilLatihan.textContent = "";
+
+    const originalLog = console.log.bind(console);
+
+    console.log = (...args) => {
+      originalLog(...args);
+
+      // Hasil async sudah punya tempat sendiri
+      if (String(args[0]).startsWith("Latihan Async")) {
+        return;
+      }
+
+      const teks = args.map(arg => {
+        if (typeof arg === "object") {
+          return JSON.stringify(arg, null, 2);
+        }
+
+        return String(arg);
+      }).join(" ");
+
+      hasilLatihan.textContent += teks + "\n\n";
+    };
+  </script>
+
+  <!-- FILE LATIHAN JAVASCRIPT -->
+  <script type="module"
+    src="01_variabel_arrow_template.js"></script>
+
+  <script type="module"
+    src="02_destructuring_spread.js"></script>
+
+  <script type="module"
+    src="03_classes_object.js"></script>
+
+  <script type="module"
+    src="04_array_methods.js"></script>
+
+  <script type="module"
+    src="05_async_programming.js"></script>
+
+</body>
+</html>

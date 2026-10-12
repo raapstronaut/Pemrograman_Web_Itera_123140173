@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-content">
+
+      <div class="brand">
+        <span aria-hidden="true"></span>
+
+        <div>
+          <strong>Personal Dashboard</strong>
+          <small>Manage your tasks efficiently</small>
+        </div>
+      </div>
+
+      <div class="student-label">
+        <span class="student-dot" aria-hidden="true"></span>
+        
+        <div class="student-info">
+          <strong>Muhamad Rafi Ilham</strong>
+          <small class="student-nim">123140173</small>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="container dashboard">
+
+    <!-- STATISTIK -->
+    <section class="stats" aria-label="Ringkasan tugas">
+
+      <article class="stat-card">
+        <span class="stat-icon total-icon" aria-hidden="true">
+          ▦
+        </span>
+        <div>
+          <p>Total tugas</p>
+          <strong id="totalTasks">0</strong>
+          <small>Semua tugas tercatat</small>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon pending-icon" aria-hidden="true">
+          ◷
+        </span>
+        <div>
+          <p>Belum selesai</p>
+          <strong id="pendingTasks">0</strong>
+          <small>Masih perlu dikerjakan</small>
+        </div>
+      </article>
+
+      <article class="stat-card">
+        <span class="stat-icon done-icon" aria-hidden="true">
+          ✓
+        </span>
+        <div>
+          <p>Selesai</p>
+          <strong id="doneTasks">0</strong>
+          <small>Tugas yang sudah beres</small>
+        </div>
+      </article>
+
+    </section>
+
+    <div class="content-grid">
+
+      <!-- DAFTAR TUGAS -->
+      <section class="panel tasks-panel" aria-labelledby="tasks-title">
+
+        <div class="panel-heading">
+          <div>
+            <span class="section-kicker">
+              DAFTAR PEKERJAAN
+            </span>
+            <h2 id="tasks-title">Tugas kuliah</h2>
+          </div>
+
+          <span class="count-pill" id="taskCount">0 tugas</span>
+        </div>
+
+        <!-- FILTER -->
+        <div class="filters" aria-label="Filter tugas">
+
+          <button
+            type="button"
+            class="filter-btn active"
+            data-filter="all"
+            aria-pressed="true"
+          >
+            Semua
+          </button>
+
+          <button
+            type="button"
+            class="filter-btn"
+            data-filter="pending"
+            aria-pressed="false"
+          >
+            Belum selesai
+          </button>
+
+          <button
+            type="button"
+            class="filter-btn"
+            data-filter="done"
+            aria-pressed="false"
+          >
+            Selesai
+          </button>
+
+        </div>
+
+        <div id="taskList" class="task-list" aria-live="polite">
+          <div class="empty-state">
+            <span aria-hidden="true">✦</span>
+            <h3>Belum ada tugas</h3>
+            <p>Tambah tugas pertamamu lewat formulir di samping.</p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <!-- FORM -->
+        <section class="panel form-panel" aria-labelledby="form-title">
+
+          <span class="section-kicker">CATAT TUGAS BARU</span>
+
+          <h2 id="form-title">Tambah tugas</h2>
+
+          <p class="panel-description">
+            Isi detail tugas supaya deadline nggak terlewat.
+          </p>
+
+          <form id="taskForm">
+
+            <input type="hidden" id="taskId">
+
+            <div class="field">
+              <label for="taskCourse">Mata Kuliah</label>
+              <input
+                id="taskCourse"
+                type="text"
+                placeholder="Contoh: Pengembangan Aplikasi Web"
+                maxlength="100"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="taskName">Deskripsi Tugas</label>
+              <input
+                id="taskName"
+                type="text"
+                placeholder="Contoh: Membuat Personal Dashboard"
+                maxlength="140"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="taskDeadline">Tanggal Deadline</label>
+              <input
+                id="taskDeadline"
+                type="date"
+                required
+              >
+            </div>
+
+            <button
+              type="submit"
+              class="primary-btn"
+              id="submitBtn"
+            >
+              + Simpan tugas
+            </button>
+
+            <button
+              type="button"
+              class="secondary-btn"
+              id="cancelBtn"
+              hidden
+            >
+              Batal edit
+            </button>
+
+          </form>
+        </section>
+      </aside>
+    </div>
+
+  <!-- QUOTE DARI API -->
+        <section class="panel quote-panel" aria-labelledby="quote-title">
+
+          <div class="quote-top">
+            <span class="quote-symbol" aria-hidden="true">“</span>
+            <span class="section-kicker">
+              PENYEMANGAT HARI INI
+            </span>
+          </div>
+
+          <h2 id="quote-title">Sedikit motivasi</h2>
+
+          <blockquote id="quoteText">
+            Memuat kutipan...
+          </blockquote>
+
+          <p id="quoteAuthor" class="quote-author"></p>
+
+          <button
+            type="button"
+            id="refreshQuote"
+            class="quote-btn"
+          >
+            ↻ Kutipan baru
+          </button>
+
+        </section>
+  </main>
+
+  <footer class="site-footer">
+    Praktikum PAW Pertemuan 2 ·
+    Dibuat dengan HTML, CSS & JavaScript ES6+
+  </footer>
+
+</body>
+</html>
